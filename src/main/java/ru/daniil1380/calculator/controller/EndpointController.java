@@ -5,12 +5,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 @RestController
 public class EndpointController {
 
     @GetMapping(value = "/calculator/")
-    public ResponseEntity<Long> getTestData(@RequestParam(name = "exp") String expression) {
-        return ResponseEntity.ok(0L);
+    public ResponseEntity<Double> getTestData(@RequestParam(name = "exp") String expression) throws ScriptException {
+        ScriptEngineManager factory = new ScriptEngineManager();
+        ScriptEngine engine = factory.getEngineByName("JavaScript");
+        return ResponseEntity.ok((Double) engine.eval("4-5/4*4"));
     }
 
 }
