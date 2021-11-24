@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class EndpointController {
 
-    @GetMapping(value = "/calculator/")
+    @GetMapping(value = "api/calculator/")
     public ResponseEntity<Double> getTestData(@RequestParam(name = "exp") String expression) throws ScriptException {
         expression = addSpecificSymbols(expression);
         ScriptEngineManager factory = new ScriptEngineManager();
