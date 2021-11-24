@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import java.util.List;
 
 @RestController
 public class EndpointController {
@@ -16,7 +17,7 @@ public class EndpointController {
     public ResponseEntity<Double> getTestData(@RequestParam(name = "exp") String expression) throws ScriptException {
         ScriptEngineManager factory = new ScriptEngineManager();
         ScriptEngine engine = factory.getEngineByName("JavaScript");
-        return ResponseEntity.ok((Double) engine.eval("4-5/4*4"));
+        return ResponseEntity.ok((Double) engine.eval(expression));
     }
 
 }
