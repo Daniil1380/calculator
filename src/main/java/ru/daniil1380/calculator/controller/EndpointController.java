@@ -20,5 +20,4 @@ public class EndpointController {
         return ResponseEntity.ok(calculatorService.calculate(expression));
     }
 
-
 }
