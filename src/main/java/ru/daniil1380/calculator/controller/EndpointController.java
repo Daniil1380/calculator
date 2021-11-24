@@ -13,26 +13,28 @@ import java.util.List;
 @RestController
 public class EndpointController {
 
-    @GetMapping(value = "api/calculator/")
+    @GetMapping(value = "api/calculator")
     public ResponseEntity<Double> getTestData(@RequestParam(name = "exp") String expression) throws ScriptException {
         expression = addSpecificSymbols(expression);
+        expression = expression + ";";
+        expression = expression.replace(" ", "+");
+        System.out.println(expression);
         ScriptEngineManager factory = new ScriptEngineManager();
         ScriptEngine engine = factory.getEngineByName("JavaScript");
-        return ResponseEntity.ok((Double) engine.eval(expression));
+        if (engine.eval(expression) instanceof Double) {
+            return ResponseEntity.ok((Double) engine.eval(expression));
+        }
+        if (engine.eval(expression) instanceof Integer) {
+            return ResponseEntity.ok(((Integer) engine.eval(expression)).doubleValue());
+        }
+        return ResponseEntity.ok(0.0);
     }
 
     private String addSpecificSymbols(String expression){
-        expression = expression.replace("e", "E");
-        expression = expression.replace("pi", "PI");
-        expression = expression.replace("Pi", "PI");
-        expression = expression.replace("pI", "PI");
-        List<String> symbols = List.of("E", "PI");
-        for (String symbol : symbols) {
-            while (expression.contains(symbol)){
-                int index = expression.indexOf(symbol);
-                expression = expression.substring(0, index) + "Math." + expression.substring(index);
-            }
-        }
+        expression = expression.replace("e", "Math.E");
+        expression = expression.replace("pi", "Math.PI");
+        expression = expression.replace("Pi", "Math.PI");
+        expression = expression.replace("pI", "Math.PI");
         return expression;
     }
 
