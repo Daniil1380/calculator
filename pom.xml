@@ -8,6 +8,7 @@
         <version>2.6.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>ru.daniil1380</groupId>
     <artifactId>calculator</artifactId>
     <version>0.1</version>
@@ -15,6 +16,7 @@
     <description>string calculator</description>
     <properties>
         <java.version>11</java.version>
+        <start-class>ru.daniil1380.calculator.CalculatorApplication</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -34,6 +36,28 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>ru.daniil1380.calculator.CalculatorApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <packageName>ru.daniil1380.calculator</packageName>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
