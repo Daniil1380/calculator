@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.List;
 
 @RestController
 public class EndpointController {
@@ -18,7 +17,6 @@ public class EndpointController {
         expression = addSpecificSymbols(expression);
         expression = expression + ";";
         expression = expression.replace(" ", "+");
-        System.out.println(expression);
         ScriptEngineManager factory = new ScriptEngineManager();
         ScriptEngine engine = factory.getEngineByName("JavaScript");
         if (engine.eval(expression) instanceof Double) {
