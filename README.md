@@ -59,3 +59,6 @@ api/calculator?exp=2*e-4
 
 #### 
 
+Develop CI/CD: [![CircleCI](https://circleci.com/gh/Daniil1380/calculator/tree/develop.svg?style=svg)](https://circleci.com/gh/Daniil1380/calculator/tree/develop)
+Master CI/CD: [![CircleCI](https://circleci.com/gh/Daniil1380/calculator/tree/develop.svg?style=svg)](https://circleci.com/gh/Daniil1380/calculator/tree/master)
+
