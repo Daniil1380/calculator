@@ -10,6 +10,7 @@ class ServiceTest {
 
     private final CalculatorService calculatorService = new CalculatorService();
 
+
     @Test
     void getTestData_checkSimplePlus() throws ScriptException {
         Double actual = calculatorService.calculate("24+34");
