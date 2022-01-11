@@ -57,5 +57,9 @@ api/calculator?exp=2*e-4
 
 Любой участник сообщества в праве предлагать свои идеи, а также их реализацию. have a fun :)
 
-#### 
+#### CI/CD - https://circleci.com/ 
+
+develop branch: [![CircleCI](https://circleci.com/gh/Daniil1380/calculator/tree/develop.svg?style=svg)](https://circleci.com/gh/Daniil1380/calculator/tree/develop)
+
+master branch: [![CircleCI](https://circleci.com/gh/Daniil1380/calculator/tree/develop.svg?style=svg)](https://circleci.com/gh/Daniil1380/calculator/tree/master)
 
